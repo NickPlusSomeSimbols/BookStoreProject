@@ -869,6 +869,21 @@
         "runtime": {
           "bin/placeholder/BookStoreProjectCore.dll": {}
         }
+      },
+      "BookStoreProjectInfrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BookStoreProjectCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.11",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.11"
+        },
+        "compile": {
+          "bin/placeholder/BookStoreProjectInfrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookStoreProjectInfrastructure.dll": {}
+        }
       }
     }
   },
@@ -2669,11 +2684,16 @@
       "type": "project",
       "path": "../BookStoreProject.Core/BookStoreProjectCore.csproj",
       "msbuildProject": "../BookStoreProject.Core/BookStoreProjectCore.csproj"
+    },
+    "BookStoreProjectInfrastructure/1.0.0": {
+      "type": "project",
+      "path": "../BookStoreProject.Infrastructure/BookStoreProjectInfrastructure.csproj",
+      "msbuildProject": "../BookStoreProject.Infrastructure/BookStoreProjectInfrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "BookStoreProjectCore >= 1.0.0",
+      "BookStoreProjectInfrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.11"
@@ -2710,8 +2730,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject.Core\\BookStoreProjectCore.csproj": {
-              "projectPath": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject.Core\\BookStoreProjectCore.csproj"
+            "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject.Infrastructure\\BookStoreProjectInfrastructure.csproj": {
+              "projectPath": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject.Infrastructure\\BookStoreProjectInfrastructure.csproj"
             }
           }
         }

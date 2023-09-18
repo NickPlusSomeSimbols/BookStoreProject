@@ -1,0 +1,15 @@
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectInfrastructure.deps.json
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectInfrastructure.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectInfrastructure.pdb
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectCore.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectCore.pdb
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.csproj.AssemblyReference.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.AssemblyInfoInputs.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.AssemblyInfo.cs
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.csproj.CoreCompileInputs.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.csproj.CopyComplete
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\refint\BookStoreProjectInfrastructure.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.pdb
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\ref\BookStoreProjectInfrastructure.dll
