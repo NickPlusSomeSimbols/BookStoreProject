@@ -1,0 +1,14 @@
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\bin\Debug\net6.0\BookStoreProjectCore.deps.json
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\bin\Debug\net6.0\BookStoreProjectCore.runtimeconfig.json
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\bin\Debug\net6.0\BookStoreProjectCore.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\bin\Debug\net6.0\BookStoreProjectCore.pdb
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.csproj.AssemblyReference.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.AssemblyInfoInputs.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.AssemblyInfo.cs
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.csproj.CoreCompileInputs.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\refint\BookStoreProjectCore.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.pdb
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\BookStoreProjectCore.genruntimeconfig.cache
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Core\obj\Debug\net6.0\ref\BookStoreProjectCore.dll
