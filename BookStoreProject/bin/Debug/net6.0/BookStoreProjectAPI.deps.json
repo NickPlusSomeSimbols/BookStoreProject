@@ -644,7 +644,10 @@
       },
       "BookStoreProjectInfrastructure/1.0.0": {
         "dependencies": {
-          "BookStoreProjectCore": "1.0.0"
+          "BookStoreProjectCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.11",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.11"
         },
         "runtime": {
           "BookStoreProjectInfrastructure.dll": {}

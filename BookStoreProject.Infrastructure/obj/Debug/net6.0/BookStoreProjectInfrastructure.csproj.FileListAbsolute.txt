@@ -13,3 +13,5 @@ C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\refint\BookStoreProjectInfrastructure.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.pdb
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\ref\BookStoreProjectInfrastructure.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\bin\Debug\net6.0\BookStoreProjectInfrastructure.runtimeconfig.json
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject.Infrastructure\obj\Debug\net6.0\BookStoreProjectInfrastructure.genruntimeconfig.cache
