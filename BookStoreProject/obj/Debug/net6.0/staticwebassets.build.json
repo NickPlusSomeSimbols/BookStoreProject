@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xye4LvkHNXJQmoM+BKvay5rcsLv3P6Vf3WZqM9iM3V4=",
+  "Hash": "n7JSH6qS2EmBQXQ0P40xQLIkqRjSEDvqeThtxLEBi5Q=",
   "Source": "BookStoreProjectAPI",
   "BasePath": "_content/BookStoreProjectAPI",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\bundle\\BookStoreProjectAPI.styles.css",
-      "SourceId": "BookStoreProjectAPI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/BookStoreProjectAPI",
-      "RelativePath": "BookStoreProjectAPI.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\bundle\\BookStoreProjectAPI.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BookStoreProjectAPI.bundle.scp.css",
-      "SourceId": "BookStoreProjectAPI",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/BookStoreProjectAPI",
-      "RelativePath": "BookStoreProjectAPI.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BookStoreProjectAPI.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\mika\\source\\repos\\BookStoreProject\\BookStoreProject\\wwwroot\\css\\site.css",
       "SourceId": "BookStoreProjectAPI",

@@ -4,8 +4,6 @@ C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\Bo
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.AssemblyInfo.cs
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.csproj.CoreCompileInputs.cache
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.RazorAssemblyInfo.cache
-C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.RazorAssemblyInfo.cs
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\appsettings.json
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\BookStoreProjectAPI.staticwebassets.runtime.json
@@ -75,12 +73,15 @@ C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Bo
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\BookStoreProjectCore.pdb
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\scopedcss\bundle\BookStoreProjectAPI.styles.css
-C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\scopedcss\projectbundle\BookStoreProjectAPI.bundle.scp.css
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.csproj.CopyComplete
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\refint\BookStoreProjectAPI.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.pdb
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.genruntimeconfig.cache
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\ref\BookStoreProjectAPI.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.MvcApplicationPartsAssemblyInfo.cs
