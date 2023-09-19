@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookStoreProject.Abstractions;
 
 namespace BookStoreProjectCore.Model
 {
-    internal class Author
+    public class BookStorage : BaseEntity
     {
+        public BookStore BookStore { get; set; }
+        public int BookStoreId { get; set; }
+        public Book Book { get; set; }
+        public int BookId { get; set; }
+        public int Amount { get; set; }
     }
 }

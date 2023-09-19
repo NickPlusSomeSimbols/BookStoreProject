@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BookStoreProject.Model;
+using BookStoreProjectCore.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreProjectCore
@@ -11,55 +11,46 @@ namespace BookStoreProjectCore
     public class BookStoreDbContext : DbContext
     {
         public BookStoreDbContext(DbContextOptions options) : base(options) { }
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<BasketItem> BasketItems { get; set; }
-        public DbSet<CatalogItem> CatalogItems { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<BookSoldReport> BookSoldReports { get; set; }
+        public DbSet<BookStorage> BookStorages { get; set; }
+        public DbSet<BookStore> BookStores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<Author>(entity =>
             {
-                entity.Property(i => i.Date).IsRequired();
-                entity.Property(i => i.Price).IsRequired();
+                entity.Property(i => i.AuthorName).IsRequired();
+                entity.Property(i => i.BirthDate).IsRequired();
             });
 
-            modelBuilder.Entity<OrderItem>(entity =>
+            modelBuilder.Entity<Book>(entity =>
             {
-                entity.HasOne(o => o.Order)
-                    .WithMany(i => i.Items)
-                    .HasForeignKey(o => o.OrderId);
-
-                entity.Property(i => i.Name).IsRequired();
-                entity.Property(i => i.Name).HasMaxLength(50);
+                entity.Property(i => i.Title).IsRequired();
                 entity.Property(i => i.Price).IsRequired();
-                entity.Property(i => i.Quantity).IsRequired();
+
+                entity.HasMany(i => i.Authors)
+                    .WithMany(i => i.Books);
             });
 
-            modelBuilder.Entity<BasketItem>(entity =>
+            modelBuilder.Entity<BookStore>(entity =>
             {
-                entity.HasOne(b => b.Basket)
-                    .WithMany(i => i.Items)
-                    .HasForeignKey(b => b.BasketId);
+                
 
-                entity.Property(i => i.Name).IsRequired();
-                entity.Property(i => i.Name).HasMaxLength(50);
-                entity.Property(i => i.Price).IsRequired();
-                entity.Property(i => i.Quantity).IsRequired();
-                entity.HasIndex(i => i.CatalogItemId);
+                entity.Property(i => i.StoreName).IsRequired();
             });
 
-            modelBuilder.Entity<CatalogItem>(entity =>
+            modelBuilder.Entity<BookSoldReport>(entity =>
             {
-                entity.Property(i => i.Name).IsRequired();
-                entity.Property(i => i.Name).HasMaxLength(50);
-                entity.Property(i => i.Description).IsRequired();
-                entity.Property(i => i.Description).HasMaxLength(200);
-                entity.Property(i => i.Price).IsRequired();
-                entity.Property(i => i.Quantity).IsRequired();
+                entity.Property(i => i.Income).HasDefaultValue(0);
+            });
+
+            modelBuilder.Entity<BookStorage>(entity =>
+            {
+                entity.Property(i => i.Amount).HasDefaultValue(0);
             });
         }
     }

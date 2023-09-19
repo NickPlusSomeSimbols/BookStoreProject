@@ -4,6 +4,7 @@ using BookStoreProjectCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreProjectInfrastructure.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230919192425_ScemeRecreation")]
+    partial class ScemeRecreation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,8 +165,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookSoldReportId")
-                        .IsUnique();
+                    b.HasIndex("BookSoldReportId");
 
                     b.ToTable("BookStores");
                 });
@@ -212,8 +214,8 @@ namespace BookStoreProjectInfrastructure.Migrations
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStore", b =>
                 {
                     b.HasOne("BookStoreProjectCore.Model.BookSoldReport", "BookSoldReport")
-                        .WithOne("BookStore")
-                        .HasForeignKey("BookStoreProjectCore.Model.BookStore", "BookSoldReportId")
+                        .WithMany()
+                        .HasForeignKey("BookSoldReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -222,9 +224,6 @@ namespace BookStoreProjectInfrastructure.Migrations
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookSoldReport", b =>
                 {
-                    b.Navigation("BookStore")
-                        .IsRequired();
-
                     b.Navigation("SoldBooks");
                 });
 

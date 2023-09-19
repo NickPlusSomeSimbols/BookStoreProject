@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookStoreProject.Model
+namespace BookStoreProject.Abstractions
 {
     public abstract class BaseEntity
     {
