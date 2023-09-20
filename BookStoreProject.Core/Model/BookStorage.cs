@@ -1,4 +1,4 @@
-﻿using BookStoreProject.Abstractions;
+﻿using BookStoreProjectCore.Abstractions;
 
 namespace BookStoreProjectCore.Model
 {

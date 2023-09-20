@@ -1,12 +1,12 @@
 ﻿using BookStoreProjectCore.Abstractions;
 
-namespace BookStoreProjectCore.Model
+namespace BookStoreProjectInfrastructure.Dtos.Author
 {
-    public class Author : BaseEntity
+    public record AuthorDto
     {
+        public int Id { get; set; }
         public string AuthorName { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime? DeathDate { get; set; }
-        public ICollection<Book> Books { get; set; }
     }
 }

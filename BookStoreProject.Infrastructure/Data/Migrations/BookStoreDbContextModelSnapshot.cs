@@ -34,7 +34,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasIndex("BooksId");
 
-                    b.ToTable("AuthorBook");
+                    b.ToTable("AuthorBook", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Author", b =>
@@ -58,7 +58,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Book", b =>
@@ -86,7 +86,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasIndex("BookSoldReportId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookSoldReport", b =>
@@ -110,7 +110,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BookSoldReports");
+                    b.ToTable("BookSoldReports", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStorage", b =>
@@ -139,7 +139,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("BookStoreId")
                         .IsUnique();
 
-                    b.ToTable("BookStorages");
+                    b.ToTable("BookStorages", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStore", b =>
@@ -165,7 +165,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("BookSoldReportId")
                         .IsUnique();
 
-                    b.ToTable("BookStores");
+                    b.ToTable("BookStores", (string)null);
                 });
 
             modelBuilder.Entity("AuthorBook", b =>

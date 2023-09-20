@@ -31,15 +31,10 @@ namespace BookStoreProjectCore
             {
                 entity.Property(i => i.Title).IsRequired();
                 entity.Property(i => i.Price).IsRequired();
-
-                entity.HasMany(i => i.Authors)
-                    .WithMany(i => i.Books);
             });
 
             modelBuilder.Entity<BookStore>(entity =>
             {
-                
-
                 entity.Property(i => i.StoreName).IsRequired();
             });
 

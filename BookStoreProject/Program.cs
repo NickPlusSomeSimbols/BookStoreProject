@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using BookStoreProjectCore;
+using BookStoreProjectInfrastructure.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddDbContext<BookStoreDbContext>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
+builder.Services.AddScoped<BookDataService>();
+builder.Services.AddScoped<AuthorDataService>();
 
 var app = builder.Build();
 
