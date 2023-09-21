@@ -18,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<BookDataService>();
 builder.Services.AddScoped<AuthorDataService>();
 builder.Services.AddScoped<BookStorageDataService>();
+builder.Services.AddScoped<BookStoreDataService>();
 
 var app = builder.Build();
 

@@ -4,7 +4,6 @@
     {
         public int BookId { get; set; }
         public int BookStoreId { get; set; }
-
         public int Amount { get; set; }
     }
 }

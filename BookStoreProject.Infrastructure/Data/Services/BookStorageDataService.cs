@@ -1,15 +1,9 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.Exceptions;
 using BookStoreProjectCore.Model;
-using BookStoreProjectInfrastructure.Dtos.Book;
 using BookStoreProjectInfrastructure.Dtos.Storage;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
@@ -21,20 +15,20 @@ namespace BookStoreProjectInfrastructure.Data.Services
         {
             _context = dbContext;
         }
-        /*public async Task<BookStorageDto> GetStorageAsync(int StorageId)
+        public async Task<BookStorageDto> GetStorageAsync(int StorageId)
         {
-            var bookStorage = await _context.BookStorages.FirstOrDefaultAsync(i => i.BookStoreId == StorageId);
-            if (bookStorage == null)
+            var bookInStorage = await _context.BookStorages.FirstOrDefaultAsync(i => i.BookStoreId == StorageId);
+            if (bookInStorage == null)
             {
                 throw new ItemNotFoundException();
             }
 
-            var bookStorageDto = bookStorage.Adapt<BookStorageDto>();
+            var bookInStorageDto = bookInStorage.Adapt<BookStorageDto>();
 
-            return bookStorageDto;
+            return bookInStorageDto;
         }
         
-        public async Task<int> AddBookToStoreAsync(AddBookToStorageDto createRequest)
+        public async Task<int> AddBookToStorageAsync(AddBookToStorageDto createRequest)
         {
             var addBookToStorage = new BookStorage
             {
@@ -49,14 +43,35 @@ namespace BookStoreProjectInfrastructure.Data.Services
             return addBookToStorage.Id;
         }
 
-        public async Task<int> UpdateBookToStoreAsync(UpdateBookStoreDto updateRequest)
+        public async Task<int> UpdateBookToStorageAsync(UpdateBookToStorageDto updateRequest)
         {
+            var bookToStorage = await _context.BookStorages.FindAsync(updateRequest.Id);
+            if (bookToStorage == null)
+            {
+                throw new ItemNotFoundException();
+            }
 
+            bookToStorage.BookId = updateRequest.BookId;
+            bookToStorage.Amount = updateRequest.Amount;
+            bookToStorage.BookStoreId = updateRequest.BookStoreId;
+
+            await _context.SaveChangesAsync();
+
+            return bookToStorage.Id;
         }
 
-        public async Task<bool> DeleteBookFromStoreAsync(int id)
+        public async Task<bool> DeleteBookFromStorageAsync(int id)
         {
+            var bookInStorage = await _context.BookStorages.FindAsync(id);
+            if (bookInStorage == null)
+            {
+                throw new ItemNotFoundException();
+            }
 
-        }*/
+            _context.BookStorages.Remove(bookInStorage);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

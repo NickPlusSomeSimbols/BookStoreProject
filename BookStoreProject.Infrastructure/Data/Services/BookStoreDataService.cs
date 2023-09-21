@@ -7,11 +7,11 @@ using Mapster;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
-    public class BookStoreDateService
+    public class BookStoreDataService
     {
         private readonly BookStoreDbContext _context;
 
-        public BookStoreDateService(BookStoreDbContext dbContext)
+        public BookStoreDataService(BookStoreDbContext dbContext)
         {
             _context = dbContext;
         }

@@ -1,37 +1,37 @@
 ﻿using BookStoreProjectInfrastructure.Data.Services;
-using BookStoreProjectInfrastructure.Dtos.Author;
+using BookStoreProjectInfrastructure.Dtos.Store;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers
 {
     public class BookStoreController : BaseController
     {
-        private readonly BookStoreDateService _bookStoreDataService;
+        private readonly BookStoreDataService _bookStoreDataService;
 
-        /*public BookStoreController(BookStoreDateService bookStoreDataService)
+        public BookStoreController(BookStoreDataService bookStoreDataService)
         {
             _bookStoreDataService = bookStoreDataService;
         }
 
-        [HttpGet("Author-Get")]
-        public Task<AuthorDto> GetBook(int id)
+        [HttpGet("BookStore-Get")]
+        public Task<BookStoreDto> GetBook(int id)
         {
             return _bookStoreDataService.GetBookStoreAsync(id);
         }
-        [HttpPost("Author-Create")]
-        public Task<int> CreateAuthor(CreateAuthorDto createRequest)
+        [HttpPost("BookStorage-Create")]
+        public Task<int> CreateAuthor(CreateBookStoreDto createRequest)
         {
             return _bookStoreDataService.CreateBookStoreAsync(createRequest);
         }
-        [HttpPatch("Author-Update")]
-        public Task<int> UpdateAuthor(UpdateAuthorDto updateRequest)
+        [HttpPatch("BookStore-Update")]
+        public Task<int> UpdateAuthor(UpdateBookStoreDto updateRequest)
         {
             return _bookStoreDataService.UpdateBookStoreAsync(updateRequest);
         }
-        [HttpDelete("Author-Delete")]
-        public Task<bool> DeletAuthor(int id)
+        [HttpDelete("BookStore-Delete")]
+        public Task<bool> DeletBookStore(int id)
         {
             return _bookStoreDataService.DeleteBookStoreAsync(id);
-        }*/
+        }
     }
 }

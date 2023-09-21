@@ -37,20 +37,26 @@ namespace BookStoreProjectCore
 
             modelBuilder.Entity<BookStore>(entity =>
             {
+                entity.HasIndex(i => i.StoreName).IsUnique();
+
                 entity.Property(i => i.StoreName).IsRequired();
             });
 
             modelBuilder.Entity<BookSoldReport>(entity =>
             {
-                entity.Property(i => i.Income).HasDefaultValue(0);
-                entity.Property(i => i.Income).HasDefaultValue(0);
+                entity.Property(i => i.Income).HasDefaultValue(0); // Optional
+                entity.Property(i => i.BookStoreId).IsRequired();
+                entity.Property(i => i.SoldBookId).IsRequired();
             });
 
             modelBuilder.Entity<BookStorage>(entity =>
             {
+                entity.HasIndex(i => new { i.BookId, i.BookStoreId }).IsUnique();
+
                 entity.Property(i => i.Amount).HasDefaultValue(0);
                 entity.Property(i => i.BookStoreId).IsRequired();
                 entity.Property(i => i.BookId).IsRequired();
+
             });
             modelBuilder.Entity<BasketItem>(entity =>
             {
