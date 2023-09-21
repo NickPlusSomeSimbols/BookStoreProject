@@ -37,7 +37,7 @@ namespace WA.Pizza.Infrastructure
                 .Map(d => d.Title, s => s.Title)
                 .Map(d => d.CreationDate, s => s.CreationDate)
                 .Map(d => d.Price, s => s.Price);
-            //AUTHOR
+            //AUTHOR Forward
             TypeAdapterConfig<Author, AuthorDto>.NewConfig()
                 .Map(d => d.Id, s => s.Id)
                 .Map(d => d.AuthorName, s => s.AuthorName)
@@ -48,6 +48,21 @@ namespace WA.Pizza.Infrastructure
                 .Map(d => d.BirthDate, s => s.BirthDate)
                 .Map(d => d.DeathDate, s => s.DeathDate);
             TypeAdapterConfig<Author, UpdateAuthorDto>.NewConfig()
+                .Map(d => d.AuthorName, s => s.AuthorName)
+                .Map(d => d.BirthDate, s => s.BirthDate)
+                .Map(d => d.DeathDate, s => s.DeathDate);
+
+            //AUTHOR Backward
+            TypeAdapterConfig<AuthorDto, Author>.NewConfig()
+                .Map(d => d.Id, s => s.Id)
+                .Map(d => d.AuthorName, s => s.AuthorName)
+                .Map(d => d.BirthDate, s => s.BirthDate)
+                .Map(d => d.DeathDate, s => s.DeathDate);
+            TypeAdapterConfig<CreateAuthorDto, Author>.NewConfig()
+                .Map(d => d.AuthorName, s => s.AuthorName)
+                .Map(d => d.BirthDate, s => s.BirthDate)
+                .Map(d => d.DeathDate, s => s.DeathDate);
+            TypeAdapterConfig<UpdateAuthorDto, Author>.NewConfig()
                 .Map(d => d.AuthorName, s => s.AuthorName)
                 .Map(d => d.BirthDate, s => s.BirthDate)
                 .Map(d => d.DeathDate, s => s.DeathDate);

@@ -2,8 +2,7 @@
 using BookStoreProjectCore.Model;
 using BookStoreProjectInfrastructure.Dtos.Book;
 using Mapster;
-using Microsoft.EntityFrameworkCore;
-using WA.Pizza.Core.Exceptions;
+using BookStoreProjectCore.Exceptions;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
@@ -18,30 +17,57 @@ namespace BookStoreProjectInfrastructure.Data.Services
 
         public async Task<BookDto> GetBookAsync(int id)
         {
-            var foundBook = await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                throw new ItemNotFoundException();
+            }
 
-            if (foundBook == null)
-                throw new ItemNotFoundException("Book was not found");
+            // You can use AutoMapper or manually map the Book entity to a BookDto.
+            var bookDto = book.Adapt<BookDto>();
 
-            return foundBook.Adapt<BookDto>();
+            return bookDto;
         }
+
         public async Task<int> CreateBookAsync(CreateBookDto createRequest)
         {
             var book = createRequest.Adapt<Book>();
 
-            await _context.Books.AddAsync(book);
+            _context.Books.Add(book);
+            await _context.SaveChangesAsync();
+
+            return book.Id;
+        }
+
+        public async Task<int> UpdateBookAsync(UpdateBookDto updateRequest)
+        {
+            var book = await _context.Books.FindAsync(updateRequest.Id);
+            if (book == null)
+            {
+                throw new ItemNotFoundException();
+            }
+
+            book.Title = updateRequest.Title;
+            book.CreationDate = updateRequest.CreationDate;
+            book.Price = updateRequest.Price;
 
             await _context.SaveChangesAsync();
 
             return book.Id;
         }
-        public async Task<int> UpdateBookAsync(UpdateBookDto updateRequest)
+
+        public async Task<bool> DeleteBookAsync(int id)
         {
-            return await Task.FromResult(0);
-        }
-        public async Task<int> DeleteBookAsync(int id)
-        {
-            return await Task.FromResult(0);
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                throw new ItemNotFoundException();
+            }
+
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

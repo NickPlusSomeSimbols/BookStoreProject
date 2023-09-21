@@ -1,6 +1,5 @@
 ﻿using BookStoreProjectInfrastructure.Data.Services;
 using BookStoreProjectInfrastructure.Dtos.Book;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
@@ -14,7 +13,7 @@ public class BookController : BaseController
         _bookDataService = bookDataService;
     }
 
-    [HttpDelete("Book-Get")]
+    [HttpGet("Book-Get")]
     public Task<BookDto> GetBook(int id)
     {
         return _bookDataService.GetBookAsync(id);
@@ -27,13 +26,11 @@ public class BookController : BaseController
     [HttpPatch("Book-Update")]
     public Task<int> UpdateBook(UpdateBookDto updateRequest)
     {
-        //return _bookDataService.UpdateBookAsync(updateRequest);
-        return Task.FromResult(0);
+        return _bookDataService.UpdateBookAsync(updateRequest);
     }
     [HttpDelete("Book-Delete")]
-    public Task<bool> DeletBook()
+    public Task<bool> DeletBook(int id)
     {
-        //return _bookDataService.DeleteBookAsync();
-        return  Task.FromResult(true);
+        return _bookDataService.DeleteBookAsync(id);
     }
 }

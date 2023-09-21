@@ -1,4 +1,4 @@
-﻿namespace WA.Pizza.Core.Exceptions
+﻿namespace BookStoreProjectCore.Exceptions
 {
     public class ItemNotFoundException : Exception
     {

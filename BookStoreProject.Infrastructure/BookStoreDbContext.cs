@@ -11,6 +11,9 @@ namespace BookStoreProjectCore
         public DbSet<BookSoldReport> BookSoldReports { get; set; }
         public DbSet<BookStorage> BookStorages { get; set; }
         public DbSet<BookStore> BookStores { get; set; }
+        public DbSet<BasketItem> BasketItem { get; set; }
+        public DbSet<Basket> Basket { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,12 +21,16 @@ namespace BookStoreProjectCore
 
             modelBuilder.Entity<Author>(entity =>
             {
+                entity.HasIndex(i => i.AuthorName).IsUnique();
+
                 entity.Property(i => i.AuthorName).IsRequired();
                 entity.Property(i => i.BirthDate).IsRequired();
             });
 
             modelBuilder.Entity<Book>(entity =>
             {
+                entity.HasIndex(i => i.Title).IsUnique();
+
                 entity.Property(i => i.Title).IsRequired();
                 entity.Property(i => i.Price).IsRequired();
             });
@@ -42,6 +49,11 @@ namespace BookStoreProjectCore
             modelBuilder.Entity<BookStorage>(entity =>
             {
                 entity.Property(i => i.Amount).HasDefaultValue(0);
+            });
+            modelBuilder.Entity<BasketItem>(entity =>
+            {
+                entity.Property(i => i.BookStorageId).IsRequired();
+                entity.Property(i => i.BookId).IsRequired();
             });
         }
     }
