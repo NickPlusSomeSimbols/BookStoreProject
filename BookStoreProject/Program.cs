@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddScoped<BookDataService>();
 builder.Services.AddScoped<AuthorDataService>();
+builder.Services.AddScoped<BookStorageDataService>();
 
 var app = builder.Build();
 

@@ -15,7 +15,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
             _context = dbContext;
         }
 
-        public async Task<BookDto> GetBookAsync(int id)
+        /*public async Task<BookStorageDto> GetBookAsync(int id)
         {
             var book = await _context.Books.FindAsync(id);
             if (book == null)
@@ -24,12 +24,12 @@ namespace BookStoreProjectInfrastructure.Data.Services
             }
 
             // You can use AutoMapper or manually map the Book entity to a BookDto.
-            var bookDto = book.Adapt<BookDto>();
+            var bookDto = book.Adapt<BookStorageDto>();
 
             return bookDto;
         }
 
-        public async Task<int> CreateBookAsync(CreateBookDto createRequest)
+        public async Task<int> CreateBookAsync(CreateBookStoreDto createRequest)
         {
             var book = createRequest.Adapt<Book>();
 
@@ -39,7 +39,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
             return book.Id;
         }
 
-        public async Task<int> UpdateBookAsync(UpdateBookDto updateRequest)
+        public async Task<int> UpdateBookAsync(UpdateBookStoreDto updateRequest)
         {
             var book = await _context.Books.FindAsync(updateRequest.Id);
             if (book == null)
@@ -68,6 +68,6 @@ namespace BookStoreProjectInfrastructure.Data.Services
             await _context.SaveChangesAsync();
 
             return true;
-        }
+        }*/
     }
 }

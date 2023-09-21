@@ -49,6 +49,8 @@ namespace BookStoreProjectCore
             modelBuilder.Entity<BookStorage>(entity =>
             {
                 entity.Property(i => i.Amount).HasDefaultValue(0);
+                entity.Property(i => i.BookStoreId).IsRequired();
+                entity.Property(i => i.BookId).IsRequired();
             });
             modelBuilder.Entity<BasketItem>(entity =>
             {

@@ -1,6 +1,8 @@
 ﻿using BookStoreProjectCore.Model;
 using BookStoreProjectInfrastructure.Dtos.Author;
 using BookStoreProjectInfrastructure.Dtos.Book;
+using BookStoreProjectInfrastructure.Dtos.Storage;
+using BookStoreProjectInfrastructure.Dtos.Store;
 using Mapster;
 
 namespace WA.Pizza.Infrastructure
