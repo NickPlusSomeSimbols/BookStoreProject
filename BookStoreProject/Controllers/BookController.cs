@@ -9,14 +9,31 @@ public class BookController : BaseController
 {
     private readonly BookDataService _bookDataService;
 
-    public BookController(BookDataService basketDataService)
+    public BookController(BookDataService bookDataService)
     {
-        _bookDataService = basketDataService;
+        _bookDataService = bookDataService;
     }
 
-    [HttpPost("Item-Add")]
-    public Task<int> AddItem(CreateBookDto createRequest)
+    [HttpDelete("Book-Get")]
+    public Task<BookDto> GetBook(int id)
     {
-        return System.Threading.Tasks.Task.FromResult(0); 
+        return _bookDataService.GetBookAsync(id);
+    }
+    [HttpPost("Book-Create")]
+    public Task<int> CreateBook(CreateBookDto createRequest)
+    {
+        return _bookDataService.CreateBookAsync(createRequest);
+    }
+    [HttpPatch("Book-Update")]
+    public Task<int> UpdateBook(UpdateBookDto updateRequest)
+    {
+        //return _bookDataService.UpdateBookAsync(updateRequest);
+        return Task.FromResult(0);
+    }
+    [HttpDelete("Book-Delete")]
+    public Task<bool> DeletBook()
+    {
+        //return _bookDataService.DeleteBookAsync();
+        return  Task.FromResult(true);
     }
 }

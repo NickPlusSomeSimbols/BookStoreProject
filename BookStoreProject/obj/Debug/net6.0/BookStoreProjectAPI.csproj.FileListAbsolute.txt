@@ -85,3 +85,5 @@ C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Sw
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\obj\Debug\net6.0\BookStoreProjectAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Mapster.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Mapster.Core.dll

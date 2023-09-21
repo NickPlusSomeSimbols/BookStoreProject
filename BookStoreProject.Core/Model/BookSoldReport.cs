@@ -7,7 +7,8 @@ namespace BookStoreProjectCore.Model
         public BookStore BookStore { get; set; }
         public int StoreID { get; set; }
         public DateTime? Date { get; set; }
-        public ICollection<Book>? SoldBooks { get; set; }
+        public Book? SoldBook { get; set; }
+        public int Amount { get; set; }
         public int Income { get; set; }
     }
 }

@@ -1,22 +1,36 @@
 ﻿using BookStoreProjectInfrastructure.Data.Services;
-using BookStoreProjectInfrastructure.Dtos.Book;
-using Microsoft.AspNetCore.Authorization;
+using BookStoreProjectInfrastructure.Dtos.Author;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
 
-public class BookController : BaseController
+public class AuthorController : BaseController
 {
-    private readonly BookDataService _bookDataService;
+    private readonly AuthorDataService _authorDataService;
 
-    public BookController(BookDataService basketDataService)
+    public AuthorController(AuthorDataService authorDataService)
     {
-        _bookDataService = basketDataService;
+        _authorDataService = authorDataService;
     }
 
-    [HttpPost("Item-Add")]
-    public Task<int> AddItem(CreateBookDto createRequest)
+    //[HttpGet("Author-Get")]
+    /*public Task<AuthorDto> GetBook(int id)
     {
-        return System.Threading.Tasks.Task.FromResult(0); 
+        return _authorDataService.GetAuthorAsync(id);
     }
+    [HttpPost("Author-Create")]
+    public Task<int> CreateAuthor(CreateAuthorDto createRequest)
+    {
+        return System.Threading.Tasks.Task.FromResult(0);
+    }
+    [HttpPatch("Author-Update")]
+    public Task<int> UpdateAuthor(UpdateAuthorDto updateRequest)
+    {
+        return _authorDataService.UpdateAuthorAsync();
+    }
+    [HttpDelete("Author-Delete")]
+    public Task<bool> DeletAuthor(int id)
+    {
+        return _authorDataService.DeleteAuthorAsync(id);
+    }*/
 }

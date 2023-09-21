@@ -4,6 +4,7 @@ using BookStoreProjectCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreProjectInfrastructure.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230920203839_UnlinkReportAndBook")]
+    partial class UnlinkReportAndBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,9 +95,6 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
@@ -103,15 +103,10 @@ namespace BookStoreProjectInfrastructure.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int?>("SoldBookId")
-                        .HasColumnType("int");
-
                     b.Property<int>("StoreID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SoldBookId");
 
                     b.ToTable("BookSoldReports");
                 });
@@ -184,15 +179,6 @@ namespace BookStoreProjectInfrastructure.Migrations
                         .HasForeignKey("BooksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BookStoreProjectCore.Model.BookSoldReport", b =>
-                {
-                    b.HasOne("BookStoreProjectCore.Model.Book", "SoldBook")
-                        .WithMany()
-                        .HasForeignKey("SoldBookId");
-
-                    b.Navigation("SoldBook");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStorage", b =>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStoreProjectCore.Model;
+﻿using BookStoreProjectCore.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreProjectCore
@@ -40,6 +35,7 @@ namespace BookStoreProjectCore
 
             modelBuilder.Entity<BookSoldReport>(entity =>
             {
+                entity.Property(i => i.Income).HasDefaultValue(0);
                 entity.Property(i => i.Income).HasDefaultValue(0);
             });
 
