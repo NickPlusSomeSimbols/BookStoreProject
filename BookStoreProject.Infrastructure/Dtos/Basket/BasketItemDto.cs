@@ -1,13 +1,12 @@
 ﻿using BookStoreProjectCore.Abstractions;
+using BookStoreProjectCore.Model;
 
-namespace BookStoreProjectCore.Model
+namespace BookStoreProjectInfrastructure.Dtos.Basket
 {
-    public class BasketItem : BaseEntity
+    public record BasketItemDto
     {
         public string Title { get; set; }
-        public BookStorage BookStorage { get; set; }
         public int BookStorageId { get; set; }
-        public Book Book { get; set; }
         public int BookId { get; set; }
         public int Amount { get; set; }
     }

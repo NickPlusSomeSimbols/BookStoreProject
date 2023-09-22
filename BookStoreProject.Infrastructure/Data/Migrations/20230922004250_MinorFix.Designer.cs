@@ -4,6 +4,7 @@ using BookStoreProjectCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreProjectInfrastructure.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230922004250_MinorFix")]
+    partial class MinorFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasIndex("BooksId");
 
-                    b.ToTable("AuthorBook", (string)null);
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Author", b =>
@@ -61,7 +64,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("AuthorName")
                         .IsUnique();
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Basket", b =>
@@ -74,7 +77,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Basket", (string)null);
+                    b.ToTable("Basket");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BasketItem", b =>
@@ -107,7 +110,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasIndex("BookStorageId");
 
-                    b.ToTable("BasketItem", (string)null);
+                    b.ToTable("BasketItem");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Book", b =>
@@ -133,7 +136,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("Title")
                         .IsUnique();
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookSoldReport", b =>
@@ -167,7 +170,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasIndex("SoldBookId");
 
-                    b.ToTable("BookSoldReports", (string)null);
+                    b.ToTable("BookSoldReports");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStorage", b =>
@@ -196,7 +199,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("BookId", "BookStoreId")
                         .IsUnique();
 
-                    b.ToTable("BookStorages", (string)null);
+                    b.ToTable("BookStorages");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.BookStore", b =>
@@ -216,7 +219,7 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasIndex("StoreName")
                         .IsUnique();
 
-                    b.ToTable("BookStores", (string)null);
+                    b.ToTable("BookStores");
                 });
 
             modelBuilder.Entity("AuthorBook", b =>
