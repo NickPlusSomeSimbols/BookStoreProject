@@ -31,9 +31,7 @@ public class BasketDataService
     {
         var basketItem = createRequest.Adapt<BasketItem>();
 
-        _context.BasketItem.Add(basketItem);
-
-        var storage = _context.BookStorages.Find(basketItem.BookStorageId);
+        var storage = _context.BookStorages.Find(createRequest.BookStorageId);
         var book = _context.Books.Find(basketItem.BookId);
 
         if(book == null || storage == null)
@@ -54,6 +52,7 @@ public class BasketDataService
             };
 
             _context.BookSoldReports.Add(bookSoldReport);
+            _context.BasketItem.Add(basketItem);
 
             storage.Amount -= basketItem.Amount;
         }
@@ -76,24 +75,23 @@ public class BasketDataService
             throw new ItemNotFoundException();
         }
 
-        var replacingItem = updateRequest.Adapt<BasketItem>();
-        var storage = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId);
+        var storage = _context.BookStorages.Find(basketItem.BookStorageId);
 
-        if (replacingItem.Amount <= storage.Amount + basketItem.Amount)
+        if (updateRequest.Amount <= storage.Amount + basketItem.Amount)
         {
 
             var bookSoldReport = new BookSoldReport
             {
                 Date = DateTime.Now,
-                Income = replacingItem.Amount * _context.Books.First(i => i.Id == basketItem.BookId).Price,
-                Amount = replacingItem.Amount,
+                Income = updateRequest.Amount * _context.Books.First(i => i.Id == basketItem.BookId).Price,
+                Amount = updateRequest.Amount,
             };
-
+            
             _context.BookSoldReports.Add(bookSoldReport); // no remove cancelled sell mechanism
 
             basketItem.Amount = updateRequest.Amount;
 
-            storage.Amount += -replacingItem.Amount + basketItem.Amount;
+            storage.Amount += -updateRequest.Amount + basketItem.Amount;
         }
         else
         {

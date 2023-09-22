@@ -1,12 +1,9 @@
-﻿using BookStoreProjectAPI.Controllers;
-using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectInfrastructure.Data.Services;
 using BookStoreProjectInfrastructure.Dtos.Basket;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WA.Pizza.API.Controllers;
+namespace BookStoreProjectAPI.Controllers;
 
-[AllowAnonymous]
 public class BasketController : BaseController
 {
     private readonly BasketDataService _basketDataService;
@@ -25,7 +22,7 @@ public class BasketController : BaseController
     {
         return _basketDataService.AddItemAsync(updateRequest);
     }
-    
+
     [HttpPatch("Item-Update")]
     public Task<int> UpdateItem(UpdateBasketItemDto updateRequest)
     {

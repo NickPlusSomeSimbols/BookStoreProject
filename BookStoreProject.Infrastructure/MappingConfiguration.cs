@@ -6,7 +6,7 @@ using BookStoreProjectInfrastructure.Dtos.Storage;
 using BookStoreProjectInfrastructure.Dtos.Store;
 using Mapster;
 
-namespace WA.Pizza.Infrastructure
+namespace BookStoreProjectInfrastructure
 {
     public class MappingConfiguration
     {
