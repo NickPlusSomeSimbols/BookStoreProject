@@ -1,5 +1,6 @@
 ﻿using BookStoreProjectCore.Model;
 using BookStoreProjectInfrastructure.Dtos.Author;
+using BookStoreProjectInfrastructure.Dtos.Basket;
 using BookStoreProjectInfrastructure.Dtos.Book;
 using BookStoreProjectInfrastructure.Dtos.Storage;
 using BookStoreProjectInfrastructure.Dtos.Store;
@@ -68,6 +69,22 @@ namespace WA.Pizza.Infrastructure
                 .Map(d => d.AuthorName, s => s.AuthorName)
                 .Map(d => d.BirthDate, s => s.BirthDate)
                 .Map(d => d.DeathDate, s => s.DeathDate);
+            //BASKET Forward
+            TypeAdapterConfig<AddBasketItemDto, BasketItem>.NewConfig()
+                .Map(d => d.Amount, s => s.Amount)
+                .Map(d => d.BookStorageId, s => s.BookStorageId)
+                .Map(d => d.BookId, s => s.BookId);
+            TypeAdapterConfig<BasketItemDto, BasketItem>.NewConfig()
+                .Map(d => d.Amount, s => s.Amount)
+                .Map(d => d.BookStorageId, s => s.BookStorageId)
+                .Map(d => d.BookId, s => s.BookId);
+            TypeAdapterConfig<UpdateBasketItemDto, BasketItem>.NewConfig()
+                .Map(d => d.Amount, s => s.Amount);
+            //BASKET Backward
+            TypeAdapterConfig<BasketItem, BasketItemDto>.NewConfig()
+                .Map(d => d.Amount, s => s.Amount)
+                .Map(d => d.BookStorageId, s => s.BookStorageId)
+                .Map(d => d.BookId, s => s.BookId);
         }
     }
 }

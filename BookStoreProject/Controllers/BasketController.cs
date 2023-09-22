@@ -1,4 +1,6 @@
 ﻿using BookStoreProjectAPI.Controllers;
+using BookStoreProjectInfrastructure.Data.Services;
+using BookStoreProjectInfrastructure.Dtos.Basket;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,34 +9,32 @@ namespace WA.Pizza.API.Controllers;
 [AllowAnonymous]
 public class BasketController : BaseController
 {
-    /*private readonly BasketDataService _basketDataService;
+    private readonly BasketDataService _basketDataService;
 
     public BasketController(BasketDataService basketDataService)
     {
         _basketDataService = basketDataService;
     }
-
+    [HttpGet("Item-Get")]
+    public Task<BasketItemDto> AddItem(int id)
+    {
+        return _basketDataService.GetItemAsync(id);
+    }
     [HttpPost("Item-Add")]
-    public Task<int> AddItem(AddBasketItemRequest updateRequest)
+    public Task<int> AddItem(AddBasketItemDto updateRequest)
     {
         return _basketDataService.AddItemAsync(updateRequest);
     }
     
     [HttpPatch("Item-Update")]
-    public Task<int> UpdateItem(UpdateBasketItemRequest updateRequest)
+    public Task<int> UpdateItem(UpdateBasketItemDto updateRequest)
     {
         return _basketDataService.UpdateItemAsync(updateRequest);
     }
 
     [HttpDelete("Item-Delete")]
-    public Task<bool> DeleteItem(int catalogItemId, int basketId)
+    public Task<bool> DeleteItem(int id)
     {
-        return _basketDataService.DeleteItemAsync(catalogItemId, basketId);
+        return _basketDataService.DeleteBasketItemAsync(id);
     }
-    
-    [HttpDelete("ClearBasket")]
-    public Task<bool> ClearBasket(int basketId)
-    {
-        return _basketDataService.ClearBasketAsync(basketId);;
-    }*/
 }

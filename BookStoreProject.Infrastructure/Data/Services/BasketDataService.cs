@@ -1,28 +1,25 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.Exceptions;
 using BookStoreProjectCore.Model;
-using BookStoreProjectInfrastructure.Dtos.Author;
 using BookStoreProjectInfrastructure.Dtos.Basket;
 using Mapster;
 
-namespace WA.Pizza.Infrastructure.Data.Services;
+namespace BookStoreProjectInfrastructure.Data.Services;
 
 public class BasketDataService
 {
     private readonly BookStoreDbContext _context;
-    //private readonly BookSoldReportDataService _bookSoldReportDataService;
 
-    public BasketDataService(BookStoreDbContext dbContext /*BookSoldReportDataService bookSoldReportDataService*/)
+    public BasketDataService(BookStoreDbContext dbContext)
     {
         _context = dbContext;
-        //_bookSoldReportDataService = bookSoldReportDataService;
     }
 
     public async Task<BasketItemDto> GetItemAsync(int ItemId)
     {
         var item = await _context.BasketItem.FindAsync(ItemId);
 
-        if(item == null)
+        if (item == null)
         {
             throw new ItemNotFoundException();
         }
@@ -36,9 +33,16 @@ public class BasketDataService
 
         _context.BasketItem.Add(basketItem);
 
-        var storage = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId);
+        var storage = _context.BookStorages.Find(basketItem.BookStorageId);
+        var book = _context.Books.Find(basketItem.BookId);
 
-        if (basketItem.Amount <= storage.Amount) {
+        if(book == null || storage == null)
+        {
+            throw new ItemNotFoundException();
+        }
+
+        if (basketItem.Amount <= storage.Amount)
+        {
 
             var bookSoldReport = new BookSoldReport
             {
@@ -89,7 +93,7 @@ public class BasketDataService
 
             basketItem.Amount = updateRequest.Amount;
 
-            storage.Amount += - replacingItem.Amount + basketItem.Amount;
+            storage.Amount += -replacingItem.Amount + basketItem.Amount;
         }
         else
         {

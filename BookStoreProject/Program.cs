@@ -19,7 +19,7 @@ builder.Services.AddScoped<BookDataService>();
 builder.Services.AddScoped<AuthorDataService>();
 builder.Services.AddScoped<BookStorageDataService>();
 builder.Services.AddScoped<BookStoreDataService>();
-//builder.Services.AddScoped<BookStoreDataService>();
+builder.Services.AddScoped<BasketDataService>();
 
 var app = builder.Build();
 
