@@ -46,6 +46,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<int> UpdateBookToStorageAsync(UpdateBookToStorageDto updateRequest)
         {
             var bookToStorage = await _context.BookStorages.FindAsync(updateRequest.Id);
+
             if (bookToStorage == null)
             {
                 throw new ItemNotFoundException();
@@ -63,6 +64,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<bool> DeleteBookFromStorageAsync(int id)
         {
             var bookInStorage = await _context.BookStorages.FindAsync(id);
+
             if (bookInStorage == null)
             {
                 throw new ItemNotFoundException();

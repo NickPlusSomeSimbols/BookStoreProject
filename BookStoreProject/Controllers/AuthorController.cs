@@ -14,23 +14,23 @@ public class AuthorController : BaseController
     }
 
     [HttpGet("Author-Get")]
-    public Task<AuthorDto> GetBook(int id)
+    public async Task<AuthorDto> GetBook(int id)
     {
-        return _authorDataService.GetAuthorAsync(id);
+        return await _authorDataService.GetAuthorAsync(id);
     }
     [HttpPost("Author-Create")]
-    public Task<int> CreateAuthor(CreateAuthorDto createRequest)
+    public async Task<int> CreateAuthor(CreateAuthorDto createRequest)
     {
-        return _authorDataService.CreateAuthorAsync(createRequest);
+        return await _authorDataService.CreateAuthorAsync(createRequest);
     }
     [HttpPatch("Author-Update")]
-    public Task<int> UpdateAuthor(UpdateAuthorDto updateRequest)
+    public async Task<int> UpdateAuthor(UpdateAuthorDto updateRequest)
     {
-        return _authorDataService.UpdateAuthorAsync(updateRequest);
+        return await _authorDataService.UpdateAuthorAsync(updateRequest);
     }
     [HttpDelete("Author-Delete")]
-    public Task<bool> DeletAuthor(int id)
+    public async Task<bool> DeletAuthor(int id)
     {
-        return _authorDataService.DeleteAuthorAsync(id);
+        return await _authorDataService.DeleteAuthorAsync(id);
     }
 }

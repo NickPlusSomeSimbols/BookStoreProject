@@ -14,23 +14,23 @@ public class BookController : BaseController
     }
 
     [HttpGet("Book-Get")]
-    public Task<BookDto> GetBook(int id)
+    public async Task<BookDto> GetBook(int id)
     {
-        return _bookDataService.GetBookAsync(id);
+        return await _bookDataService.GetBookAsync(id);
     }
     [HttpPost("Book-Create")]
-    public Task<int> CreateBook(CreateBookDto createRequest)
+    public async Task<int> CreateBook(CreateBookDto createRequest)
     {
-        return _bookDataService.CreateBookAsync(createRequest);
+        return await _bookDataService.CreateBookAsync(createRequest);
     }
     [HttpPatch("Book-Update")]
-    public Task<int> UpdateBook(UpdateBookDto updateRequest)
+    public async Task<int> UpdateBook(UpdateBookDto updateRequest)
     {
-        return _bookDataService.UpdateBookAsync(updateRequest);
+        return await _bookDataService.UpdateBookAsync(updateRequest);
     }
     [HttpDelete("Book-Delete")]
-    public Task<bool> DeletBook(int id)
+    public async Task<bool> DeletBook(int id)
     {
-        return _bookDataService.DeleteBookAsync(id);
+        return await _bookDataService.DeleteBookAsync(id);
     }
 }

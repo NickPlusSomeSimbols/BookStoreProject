@@ -14,24 +14,24 @@ namespace BookStoreProjectAPI.Controllers
         }
 
         [HttpGet("BookStore-Get")]
-        public Task<BookStoreDto> GetBook(int id)
+        public async Task<BookStoreDto> GetBook(int id)
         {
-            return _bookStoreDataService.GetBookStoreAsync(id);
+            return await _bookStoreDataService.GetBookStoreAsync(id);
         }
         [HttpPost("BookStorage-Create")]
-        public Task<int> CreateAuthor(CreateBookStoreDto createRequest)
+        public async Task<int> CreateAuthor(CreateBookStoreDto createRequest)
         {
-            return _bookStoreDataService.CreateBookStoreAsync(createRequest);
+            return await _bookStoreDataService.CreateBookStoreAsync(createRequest);
         }
         [HttpPatch("BookStore-Update")]
-        public Task<int> UpdateAuthor(UpdateBookStoreDto updateRequest)
+        public async Task<int> UpdateAuthor(UpdateBookStoreDto updateRequest)
         {
-            return _bookStoreDataService.UpdateBookStoreAsync(updateRequest);
+            return await _bookStoreDataService.UpdateBookStoreAsync(updateRequest);
         }
         [HttpDelete("BookStore-Delete")]
-        public Task<bool> DeletBookStore(int id)
+        public async Task<bool> DeletBookStore(int id)
         {
-            return _bookStoreDataService.DeleteBookStoreAsync(id);
+            return await _bookStoreDataService.DeleteBookStoreAsync(id);
         }
     }
 }

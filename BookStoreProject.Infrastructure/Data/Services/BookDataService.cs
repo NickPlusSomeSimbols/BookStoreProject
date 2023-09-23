@@ -18,12 +18,12 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<BookDto> GetBookAsync(int id)
         {
             var book = await _context.Books.FindAsync(id);
+
             if (book == null)
             {
                 throw new ItemNotFoundException();
             }
 
-            // You can use AutoMapper or manually map the Book entity to a BookDto.
             var bookDto = book.Adapt<BookDto>();
 
             return bookDto;
@@ -33,7 +33,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         {
             var book = createRequest.Adapt<Book>();
 
-            _context.Books.Add(book);
+            await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
 
             return book.Id;
@@ -42,6 +42,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<int> UpdateBookAsync(UpdateBookDto updateRequest)
         {
             var book = await _context.Books.FindAsync(updateRequest.Id);
+
             if (book == null)
             {
                 throw new ItemNotFoundException();
@@ -59,6 +60,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<bool> DeleteBookAsync(int id)
         {
             var book = await _context.Books.FindAsync(id);
+
             if (book == null)
             {
                 throw new ItemNotFoundException();

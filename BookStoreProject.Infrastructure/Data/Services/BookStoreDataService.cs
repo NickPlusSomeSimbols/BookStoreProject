@@ -18,6 +18,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<BookStoreDto> GetBookStoreAsync(int id)
         {
             var bookStore = await _context.BookStores.FindAsync(id);
+
             if (bookStore == null)
             {
                 throw new ItemNotFoundException();
@@ -32,7 +33,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         {
             var bookStore = createRequest.Adapt<BookStore>();
 
-            _context.BookStores.Add(bookStore);
+            await _context.BookStores.AddAsync(bookStore);
             await _context.SaveChangesAsync();
 
             return bookStore.Id;
@@ -41,6 +42,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<int> UpdateBookStoreAsync(UpdateBookStoreDto updateRequest)
         {
             var bookStore = await _context.BookStores.FindAsync(updateRequest.Id);
+
             if (bookStore == null)
             {
                 throw new ItemNotFoundException();
@@ -56,6 +58,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<bool> DeleteBookStoreAsync(int id)
         {
             var bookStore = await _context.BookStores.FindAsync(id);
+
             if (bookStore == null)
             {
                 throw new ItemNotFoundException();

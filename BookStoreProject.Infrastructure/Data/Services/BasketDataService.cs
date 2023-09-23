@@ -31,8 +31,8 @@ public class BasketDataService
     {
         var basketItem = createRequest.Adapt<BasketItem>();
 
-        var storage = _context.BookStorages.Find(createRequest.BookStorageId);
-        var book = _context.Books.Find(basketItem.BookId);
+        var storage = await _context.BookStorages.FindAsync(createRequest.BookStorageId);
+        var book = await _context.Books.FindAsync(basketItem.BookId);
 
         if(book == null || storage == null)
         {
@@ -51,8 +51,8 @@ public class BasketDataService
                 BookStoreId = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId).BookStoreId
             };
 
-            _context.BookSoldReports.Add(bookSoldReport);
-            _context.BasketItem.Add(basketItem);
+            await _context.BookSoldReports.AddAsync(bookSoldReport);
+            await _context.BasketItem.AddAsync(basketItem);
 
             storage.Amount -= basketItem.Amount;
         }
@@ -75,23 +75,24 @@ public class BasketDataService
             throw new ItemNotFoundException();
         }
 
-        var storage = _context.BookStorages.Find(basketItem.BookStorageId);
-
+        var storage = await _context.BookStorages.FindAsync(basketItem.BookStorageId);
+        
         if (updateRequest.Amount <= storage.Amount + basketItem.Amount)
         {
-
             var bookSoldReport = new BookSoldReport
             {
                 Date = DateTime.Now,
                 Income = updateRequest.Amount * _context.Books.First(i => i.Id == basketItem.BookId).Price,
                 Amount = updateRequest.Amount,
+                BookStoreId = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId).BookStoreId
             };
             
-            _context.BookSoldReports.Add(bookSoldReport); // no remove cancelled sell mechanism
+            await _context.BookSoldReports.AddAsync(bookSoldReport); // no remove cancelled sell mechanism
 
             basketItem.Amount = updateRequest.Amount;
 
-            storage.Amount += -updateRequest.Amount + basketItem.Amount;
+            storage.Amount = storage.Amount - updateRequest.Amount + basketItem.Amount;
+            
         }
         else
         {
@@ -99,7 +100,7 @@ public class BasketDataService
         }
 
         await _context.SaveChangesAsync();
-
+        
         return basketItem.Id;
     }
 

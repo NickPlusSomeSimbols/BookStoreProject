@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
 
+public static class SomeClass
+{
+}
 public class BasketController : BaseController
 {
     private readonly BasketDataService _basketDataService;
@@ -13,25 +16,25 @@ public class BasketController : BaseController
         _basketDataService = basketDataService;
     }
     [HttpGet("Item-Get")]
-    public Task<BasketItemDto> AddItem(int id)
+    public async Task<BasketItemDto> AddItem(int id)
     {
-        return _basketDataService.GetItemAsync(id);
+        return await _basketDataService.GetItemAsync(id);
     }
     [HttpPost("Item-Add")]
-    public Task<int> AddItem(AddBasketItemDto updateRequest)
+    public async Task<int> AddItem(AddBasketItemDto createRequest)
     {
-        return _basketDataService.AddItemAsync(updateRequest);
+        return await _basketDataService.AddItemAsync(createRequest);
     }
 
     [HttpPatch("Item-Update")]
-    public Task<int> UpdateItem(UpdateBasketItemDto updateRequest)
+    public async Task<int> UpdateItem(UpdateBasketItemDto updateRequest)
     {
-        return _basketDataService.UpdateItemAsync(updateRequest);
+        return await _basketDataService.UpdateItemAsync(updateRequest);
     }
 
     [HttpDelete("Item-Delete")]
-    public Task<bool> DeleteItem(int id)
+    public async Task<bool> DeleteItem(int id)
     {
-        return _basketDataService.DeleteBasketItemAsync(id);
+        return await _basketDataService.DeleteBasketItemAsync(id);
     }
 }

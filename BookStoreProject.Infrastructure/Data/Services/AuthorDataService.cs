@@ -18,6 +18,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<AuthorDto> GetAuthorAsync(int id)
         {
             var author = await _context.Authors.FindAsync(id);
+
             if (author == null)
             {
                 throw new ItemNotFoundException();
@@ -32,7 +33,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         {
             var author = createRequest.Adapt<Author>();
 
-            _context.Authors.Add(author);
+            await _context.Authors.AddAsync(author);
             await _context.SaveChangesAsync();
 
             return author.Id;
@@ -41,6 +42,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<int> UpdateAuthorAsync(UpdateAuthorDto updateRequest)
         {
             var author = await _context.Authors.FindAsync(updateRequest.Id);
+
             if (author == null)
             {
                 throw new ItemNotFoundException();
@@ -58,6 +60,7 @@ namespace BookStoreProjectInfrastructure.Data.Services
         public async Task<bool> DeleteAuthorAsync(int id)
         {
             var author = await _context.Authors.FindAsync(id);
+
             if (author == null)
             {
                 throw new ItemNotFoundException();
