@@ -16,7 +16,7 @@ public class BasketController : BaseController
         _basketDataService = basketDataService;
     }
     [HttpGet("Item-Get")]
-    public async Task<BasketItemDto> AddItem(int id)
+    public async Task<BasketItemDto> GetItem(int id)
     {
         return await _basketDataService.GetItemAsync(id);
     }

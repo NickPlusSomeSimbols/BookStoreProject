@@ -82,16 +82,16 @@ public class BasketDataService
             var bookSoldReport = new BookSoldReport
             {
                 Date = DateTime.Now,
-                Income = updateRequest.Amount * _context.Books.First(i => i.Id == basketItem.BookId).Price,
+                Income = basketItem.Amount * _context.Books.First(i => i.Id == basketItem.BookId).Price,
                 Amount = updateRequest.Amount,
-                BookStoreId = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId).BookStoreId
+                BookStoreId = _context.BookStorages.First(i => i.Id == basketItem.BookStorageId).BookStoreId,
+                SoldBookId = basketItem.BookId
             };
             
-            await _context.BookSoldReports.AddAsync(bookSoldReport); // no remove cancelled sell mechanism
-
-            basketItem.Amount = updateRequest.Amount;
+            await _context.BookSoldReports.AddAsync(bookSoldReport); // no remove canceled sell mechanism
 
             storage.Amount = storage.Amount - updateRequest.Amount + basketItem.Amount;
+            basketItem.Amount = updateRequest.Amount;
             
         }
         else
