@@ -1,13 +1,14 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.Exceptions;
 using BookStoreProjectCore.Model;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Storage;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
-    public class BookStorageDataService
+    public class BookStorageDataService : IBookStorageDataService
     {
         private readonly BookStoreDbContext _context;
 

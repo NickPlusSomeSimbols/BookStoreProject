@@ -4,21 +4,21 @@ using System.Security;
 using System.Security.Claims;
 using System.Text;
 using BookStoreProjectCore.IdentityAuth;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectInfrastructure.Data.Services;
 
-public class AuthenticateService
+public class AuthenticateService : IAuthenticateService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
-    private readonly BasketDataService _basketDataService;
+    private readonly IBasketDataService _basketDataService;
 
-    public AuthenticateService(UserManager<ApplicationUser> userManager, IConfiguration configuration, BasketDataService basketDataService)
+    public AuthenticateService(UserManager<ApplicationUser> userManager, IConfiguration configuration, IBasketDataService basketDataService)
     {
         _basketDataService = basketDataService;
         _userManager = userManager;

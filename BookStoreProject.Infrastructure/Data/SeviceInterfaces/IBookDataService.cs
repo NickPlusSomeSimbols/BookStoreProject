@@ -4,7 +4,7 @@ using BookStoreProjectInfrastructure.Dtos.Book;
 using Mapster;
 using BookStoreProjectCore.Exceptions;
 
-namespace BookStoreProjectAPI.SeviceInterfaces
+namespace BookStoreProjectInfrastructure.Data.SeviceInterfaces
 {
     public interface IBookDataService
     {

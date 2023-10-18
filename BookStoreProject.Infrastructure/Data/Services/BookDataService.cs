@@ -3,10 +3,11 @@ using BookStoreProjectCore.Model;
 using BookStoreProjectInfrastructure.Dtos.Book;
 using Mapster;
 using BookStoreProjectCore.Exceptions;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
-    public class BookDataService
+    public class BookDataService : IBookDataService
     {
         private readonly BookStoreDbContext _context;
 

@@ -1,4 +1,4 @@
-﻿using BookStoreProjectAPI.SeviceInterfaces;
+﻿using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers

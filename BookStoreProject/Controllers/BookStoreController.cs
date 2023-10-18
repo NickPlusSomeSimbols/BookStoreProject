@@ -1,4 +1,4 @@
-﻿using BookStoreProjectAPI.SeviceInterfaces;
+﻿using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Store;
 using Microsoft.AspNetCore.Mvc;
 

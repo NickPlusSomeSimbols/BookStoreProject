@@ -1,12 +1,13 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.Exceptions;
 using BookStoreProjectCore.Model;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Basket;
 using Mapster;
 
 namespace BookStoreProjectInfrastructure.Data.Services;
 
-public class BasketDataService
+public class BasketDataService : IBasketDataService
 {
     private readonly BookStoreDbContext _context;
 

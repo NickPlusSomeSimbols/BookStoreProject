@@ -53,10 +53,12 @@ namespace BookStoreProjectAPI.Extentions
                     Console.WriteLine("NotAuthenticated!!!");
                 }
 */
+                // LOG DATA TO EXTRACT
                 var path = httpContext.Request.Path;
                 var status = httpContext.Response.StatusCode;
                 DateTime time = DateTime.UtcNow;
                 var requestBody = httpContext.Request.QueryString.Value;
+                // LOG DATA TO EXTRACT
 
                 // Temporarily replace the HttpResponseStream, which is a write-only stream, with a MemoryStream to capture it's value in-flight.  
                 var originalResponseBody = httpContext.Response.Body;

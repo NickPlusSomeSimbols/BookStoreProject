@@ -1,6 +1,6 @@
 ﻿using BookStoreProjectInfrastructure.Dtos.Basket;
 
-namespace BookStoreProjectAPI.ServiceInterfaces
+namespace BookStoreProjectInfrastructure.Data.SeviceInterfaces
 {
     public interface IBasketDataService
     {

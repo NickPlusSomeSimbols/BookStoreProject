@@ -1,18 +1,14 @@
-﻿using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Basket;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
 
-public static class SomeClass
-{
-}
 public class BasketController : BaseController
 {
-    private readonly BasketDataService _basketDataService;
+    private readonly IBasketDataService _basketDataService;
 
-    public BasketController(BasketDataService basketDataService)
+    public BasketController(IBasketDataService basketDataService)
     {
         _basketDataService = basketDataService;
     }

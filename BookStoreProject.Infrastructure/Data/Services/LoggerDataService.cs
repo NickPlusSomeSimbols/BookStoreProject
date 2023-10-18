@@ -1,4 +1,5 @@
 ﻿using BookStoreProjectCore;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
-    public class LoggerDataService
+    public class LoggerDataService : ILoggerDataService
     {
         private readonly BookStoreDbContext _context;
 

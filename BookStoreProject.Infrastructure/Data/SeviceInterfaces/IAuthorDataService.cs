@@ -1,6 +1,6 @@
 ﻿using BookStoreProjectInfrastructure.Dtos.Author;
 
-namespace BookStoreProjectAPI.SeviceInterfaces
+namespace BookStoreProjectInfrastructure.Data.SeviceInterfaces
 {
     public interface IAuthorDataService
     {

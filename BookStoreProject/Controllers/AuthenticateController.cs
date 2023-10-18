@@ -1,4 +1,4 @@
-﻿using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +8,9 @@ namespace BookStoreProjectAPI.Controllers;
 [AllowAnonymous]
 public class AuthenticateController : BaseController
 {
-    private readonly AuthenticateService _authenticateService;
+    private readonly IAuthenticateService _authenticateService;
 
-    public AuthenticateController(AuthenticateService authenticateService)
+    public AuthenticateController(IAuthenticateService authenticateService)
     {
         _authenticateService = authenticateService;
     }

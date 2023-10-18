@@ -1,4 +1,4 @@
-﻿using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Author;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +7,9 @@ namespace BookStoreProjectAPI.Controllers;
 
 public class AuthorController : BaseController
 {
-    private readonly AuthorDataService _authorDataService;
+    private readonly IAuthorDataService _authorDataService;
 
-    public AuthorController(AuthorDataService authorDataService)
+    public AuthorController(IAuthorDataService authorDataService)
     {
         _authorDataService = authorDataService;
     }

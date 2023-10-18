@@ -5,7 +5,7 @@ using BookStoreProjectInfrastructure.Dtos.Book;
 using BookStoreProjectInfrastructure.Dtos.Store;
 using Mapster;
 
-namespace BookStoreProjectAPI.SeviceInterfaces
+namespace BookStoreProjectInfrastructure.Data.SeviceInterfaces
 {
     public interface IBookStoreDataService
     {

@@ -1,12 +1,13 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.Exceptions;
 using BookStoreProjectCore.Model;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Author;
 using Mapster;
 
 namespace BookStoreProjectInfrastructure.Data.Services
 {
-    public class AuthorDataService
+    public class AuthorDataService : IAuthorDataService
     {
         private readonly BookStoreDbContext _context;
 

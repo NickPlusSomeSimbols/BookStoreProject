@@ -5,7 +5,7 @@ using BookStoreProjectInfrastructure.Dtos.Storage;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStoreProjectAPI.SeviceInterfaces
+namespace BookStoreProjectInfrastructure.Data.SeviceInterfaces
 {
     public interface IBookStorageDataService
     {
