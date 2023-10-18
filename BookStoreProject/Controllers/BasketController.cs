@@ -1,5 +1,6 @@
 ﻿using BookStoreProjectInfrastructure.Data.Services;
 using BookStoreProjectInfrastructure.Dtos.Basket;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
@@ -15,6 +16,7 @@ public class BasketController : BaseController
     {
         _basketDataService = basketDataService;
     }
+    
     [HttpGet("Item-Get")]
     public async Task<BasketItemDto> GetItem(int id)
     {

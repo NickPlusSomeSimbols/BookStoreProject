@@ -1,5 +1,6 @@
 ﻿using BookStoreProjectInfrastructure.Data.Services;
 using BookStoreProjectInfrastructure.Dtos.Author;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers;
@@ -12,7 +13,12 @@ public class AuthorController : BaseController
     {
         _authorDataService = authorDataService;
     }
-
+    [Authorize]
+    [HttpGet("Author-Get-Auth")]
+    public async Task<AuthorDto> GetBookAuth(int id)
+    {
+        return await _authorDataService.GetAuthorAsync(id);
+    }
     [HttpGet("Author-Get")]
     public async Task<AuthorDto> GetBook(int id)
     {
