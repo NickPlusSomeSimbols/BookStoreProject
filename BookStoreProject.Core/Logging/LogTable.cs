@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace BookStoreProjectCore.Logging
 {
-    public class LogEntity : BaseEntity
+    public class LogTable : BaseEntity
     {
         public ApplicationUser? ApplicationUser { get; set; }
-        public string? UserId { get; set; }
-        public DateTime LogUploadTime { get; set; }
-        public string HttpRequest { get; set; }
+        public string LogUploadTime { get; set; }
+        public string RequestJson { get; set; }
+        public string ResponseJson { get; set; }
         public int Status { get; set; }
-        public string RequestUrl { get; set; }
+        public string RequestPath { get; set; }
     }
 }

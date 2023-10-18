@@ -16,7 +16,7 @@ namespace BookStoreProjectCore
         public DbSet<BookStore> BookStores { get; set; }
         public DbSet<BasketItem> BasketItem { get; set; }
         public DbSet<Basket> Basket { get; set; }
-        public DbSet<LogEntity> logEntity { get; set; }
+        public DbSet<LogTable> logEntity { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -67,10 +67,9 @@ namespace BookStoreProjectCore
                 entity.Property(i => i.BookStorageId).IsRequired();
                 entity.Property(i => i.BookId).IsRequired();
             });
-            modelBuilder.Entity<LogEntity>(entity =>
+            modelBuilder.Entity<LogTable>(entity =>
             {
                 entity.Property(i => i.LogUploadTime).IsRequired();
-                entity.Property(i => i.HttpRequest).IsRequired();
                 entity.Property(i => i.Status).IsRequired();
             });
         }

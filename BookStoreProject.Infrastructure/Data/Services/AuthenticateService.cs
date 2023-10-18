@@ -8,6 +8,7 @@ using BookStoreProjectInfrastructure.Dtos.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectInfrastructure.Data.Services;
 
@@ -47,7 +48,6 @@ public class AuthenticateService
 
             throw new SecurityException(errors);
         }
-
         if (model.basketId != null)
             await _basketDataService.BindBuyerToBasket(user.Id, model.basketId.Value);
 

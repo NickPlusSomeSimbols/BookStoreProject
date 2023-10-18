@@ -8,8 +8,4 @@ namespace BookStoreProjectAPI.Controllers;
 [Route("api/[controller]")]
 public class BaseController : ControllerBase 
 {
-    public async Task SendLogToDb()
-    {
-
-    }
-}
+}    

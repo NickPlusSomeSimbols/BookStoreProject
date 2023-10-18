@@ -11,7 +11,6 @@ using BookStoreProjectAPI.Extentions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("Default");
 
 builder.Services.AddDbContext<BookStoreDbContext>(options =>
@@ -28,9 +27,10 @@ builder.Services.AddScoped<AuthorDataService>();
 builder.Services.AddScoped<BookStorageDataService>();
 builder.Services.AddScoped<BookStoreDataService>();
 builder.Services.AddScoped<BasketDataService>();
+builder.Services.AddScoped<LoggerDataService>();
 builder.Services.AddScoped<UserProvider>();
 
-builder.Services.AddHttpLogging(logging =>
+/*builder.Services.AddHttpLogging(logging =>
 {
     logging.LoggingFields = HttpLoggingFields.All;
     logging.LoggingFields = HttpLoggingFields.ResponseStatusCode;
@@ -39,7 +39,7 @@ builder.Services.AddHttpLogging(logging =>
     logging.RequestBodyLogLimit = 4096;
     logging.ResponseBodyLogLimit = 4096;
 
-});
+});*/
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<BookStoreDbContext>()
@@ -56,15 +56,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-app.UseRouting();
+
+app.UseHttpsRedirection();
 
 app.UseAuthentication(); // identifying who the user is
 app.UseAuthorization(); // defines what a given user can do within the app
 
-app.UseHttpLogging();
 app.MapControllers();
+
+/*app.UseRouting();*/
+
+app.UseMiddleware<LoggingMiddleware>();
 
 app.Run();
