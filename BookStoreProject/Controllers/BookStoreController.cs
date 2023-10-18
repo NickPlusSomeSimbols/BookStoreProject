@@ -1,4 +1,4 @@
-﻿using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectAPI.SeviceInterfaces;
 using BookStoreProjectInfrastructure.Dtos.Store;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +6,9 @@ namespace BookStoreProjectAPI.Controllers
 {
     public class BookStoreController : BaseController
     {
-        private readonly BookStoreDataService _bookStoreDataService;
+        private readonly IBookStoreDataService _bookStoreDataService;
 
-        public BookStoreController(BookStoreDataService bookStoreDataService)
+        public BookStoreController(IBookStoreDataService bookStoreDataService)
         {
             _bookStoreDataService = bookStoreDataService;
         }

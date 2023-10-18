@@ -1,4 +1,4 @@
-﻿using BookStoreProjectInfrastructure.Data.Services;
+﻿using BookStoreProjectAPI.SeviceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreProjectAPI.Controllers
@@ -6,9 +6,9 @@ namespace BookStoreProjectAPI.Controllers
     public class LoggerController
     {
 
-        private readonly LoggerDataService _loggerDataService;
+        private readonly ILoggerDataService _loggerDataService;
 
-        public LoggerController(LoggerDataService loggerDataService)
+        public LoggerController(ILoggerDataService loggerDataService)
         {
             _loggerDataService = loggerDataService;
         }

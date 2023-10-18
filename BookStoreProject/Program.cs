@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Identity;
 using BookStoreProjectCore.IdentityAuth;
 using BookStoreProjectAPI.Extentions;
+using BookStoreProjectAPI.SeviceInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<AuthenticateService>();
-builder.Services.AddScoped<BookDataService>();
+builder.Services.AddScoped<IBookDataService>();
 builder.Services.AddScoped<AuthorDataService>();
 builder.Services.AddScoped<BookStorageDataService>();
 builder.Services.AddScoped<BookStoreDataService>();
