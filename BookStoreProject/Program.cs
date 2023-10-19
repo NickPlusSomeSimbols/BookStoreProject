@@ -5,6 +5,7 @@ using BookStoreProjectInfrastructure.Providers;
 using Microsoft.AspNetCore.Identity;
 using BookStoreProjectCore.IdentityAuth;
 using BookStoreProjectAPI.Extentions;
+using BookStoreProjectInfrastructure.Data.SeviceInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,29 +20,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<AuthenticateService>();
-builder.Services.AddScoped<BookDataService>();
-builder.Services.AddScoped<AuthorDataService>();
-builder.Services.AddScoped<BookStorageDataService>();
-builder.Services.AddScoped<BookStoreDataService>();
-builder.Services.AddScoped<BasketDataService>();
-builder.Services.AddScoped<LoggerDataService>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+builder.Services.AddScoped<IBookDataService, BookDataService>();
+builder.Services.AddScoped<IAuthorDataService, AuthorDataService>();
+builder.Services.AddScoped<IBookStorageDataService, BookStorageDataService>();
+builder.Services.AddScoped<IBookStoreDataService, BookStoreDataService>();
+builder.Services.AddScoped<IBasketDataService, BasketDataService>();
+builder.Services.AddScoped<ILoggerDataService, LoggerDataService>();
 builder.Services.AddScoped<UserProvider>();
-
-/*builder.Services.AddHttpLogging(logging =>
-{
-    logging.LoggingFields = HttpLoggingFields.All;
-    logging.LoggingFields = HttpLoggingFields.ResponseStatusCode;
-    logging.ResponseHeaders.Add("MyResponseHeader");
-    logging.MediaTypeOptions.AddText("application/javascript");
-    logging.RequestBodyLogLimit = 4096;
-    logging.ResponseBodyLogLimit = 4096;
-
-});*/
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<BookStoreDbContext>()
     .AddDefaultTokenProviders();
+
+builder.AddAuthentication();
 
 builder.AddSwaggerGen();
 
@@ -55,7 +47,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication(); // identifying who the user is
@@ -63,7 +54,7 @@ app.UseAuthorization(); // defines what a given user can do within the app
 
 app.MapControllers();
 
-/*app.UseRouting();*/
+app.UseRouting();
 
 app.UseMiddleware<LoggingMiddleware>();
 

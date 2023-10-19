@@ -1,5 +1,6 @@
 ﻿using BookStoreProjectCore;
 using BookStoreProjectCore.IdentityAuth;
+using BookStoreProjectCore.Logging;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
@@ -9,55 +10,50 @@ namespace BookStoreProjectAPI.Extentions
     {
         private readonly RequestDelegate _next;
         private readonly bool _isRequestResponseLoggingEnabled;
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LoggingMiddleware(RequestDelegate next, IConfiguration config/*, UserManager<ApplicationUser> userManager*/)
+        public LoggingMiddleware(RequestDelegate next, IConfiguration config)
         {
             _next = next;
             _isRequestResponseLoggingEnabled = config.GetValue<bool>("EnableRequestResponseLogging", true); // true is set manually, it was false idk why
-            /*_userManager = userManager;*/
         }
 
         public async Task InvokeAsync(HttpContext httpContext, BookStoreDbContext dbContext)
         {
             // Middleware is enabled only when the EnableRequestResponseLogging config value is set.  
-            if (_isRequestResponseLoggingEnabled)
+            string[] url = httpContext.Request.Path.ToString().Split('/');
+
+            if (_isRequestResponseLoggingEnabled && !(url[^1] == "Login"))
             {
-                Console.WriteLine($"HTTP request information:\n" +
-                    $"\tMethod: {httpContext.Request.Method}\n" +
-                    $"\tPath: {httpContext.Request.Path}\n" +
-                    $"\tQueryString: {httpContext.Request.QueryString}\n" +
-                    $"\tHeaders: {FormatHeaders(httpContext.Request.Headers)}\n" +
-                    $"\tSchema: {httpContext.Request.Scheme}\n" +
-                    $"\tHost: {httpContext.Request.Host}\n" +
-                    $"\tBody: {await ReadBodyFromRequest(httpContext.Request)}\n" +
-                    $"\tBody: {httpContext.Request.Body.ToString}\n" +
-                    $"\tTime: {DateTime.UtcNow}\n" +
+                string callingUserId = "Unauthorized";
 
-                    $"\tNewBody: {httpContext.Request.QueryString.Value}\n" +
-                    $"\tPath: {httpContext.Request.Path}");
-                var user = new HttpContextAccessor().HttpContext?.User;
+                if (httpContext.User.Identity.IsAuthenticated)
+                {
+                     callingUserId = dbContext.Users.FirstOrDefault(i => i.UserName == httpContext.User.Identity.Name).Id;
+                }
 
-                /*using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    //Resolve ASP .NET Core Identity with DI help
-                    var userManager = (UserManager<ApplicationUser>)scope.ServiceProvider.GetService(typeof(UserManager<ApplicationUser>));
-                    // do you things here
-                }
-                if (user.Identity.IsAuthenticated)
-                {
-                    Console.WriteLine("IsAuthenticated!!!");
-                }
-                else
-                {
-                    Console.WriteLine("NotAuthenticated!!!");
-                }
-*/
                 // LOG DATA TO EXTRACT
                 var path = httpContext.Request.Path;
                 var status = httpContext.Response.StatusCode;
                 DateTime time = DateTime.UtcNow;
-                var requestBody = httpContext.Request.QueryString.Value;
+
+                string requestBodyText;
+
+                if (httpContext.Request.QueryString.HasValue)
+                {
+                    requestBodyText = httpContext.Request.QueryString.Value.ToString();
+                }
+                else
+                {
+                    /*var originalRequestBody = httpContext.Response.Body;
+                    using var newRequestBody = new MemoryStream();
+                    httpContext.Request.Body = newRequestBody;
+
+                    newRequestBody.Seek(0, SeekOrigin.Begin);
+                    requestBodyText = await new StreamReader(httpContext.Request.Body).ReadToEndAsync();*/
+
+                    requestBodyText = await ReadBodyFromRequest(httpContext.Request);
+
+                }
                 // LOG DATA TO EXTRACT
 
                 // Temporarily replace the HttpResponseStream, which is a write-only stream, with a MemoryStream to capture it's value in-flight.  
@@ -71,13 +67,28 @@ namespace BookStoreProjectAPI.Extentions
                 newResponseBody.Seek(0, SeekOrigin.Begin);
                 var responseBodyText = await new StreamReader(httpContext.Response.Body).ReadToEndAsync();
 
-                Console.WriteLine($"HTTP response information:\n" +
-                    $"\tStatusCode: {httpContext.Response.StatusCode}\n" +
-                    $"\tContentType: {httpContext.Response.ContentType}\n" +
-                    $"\tHeaders: {FormatHeaders(httpContext.Response.Headers)}\n" +
-                    $"\tBody: {responseBodyText}");
+                LogTable logTable = new()
+                {
+                    LoggedUserId = callingUserId,
+                    LogUploadTime = time.ToString(),
+                    RequestJson = requestBodyText,
+                    ResponseJson = responseBodyText,
+                    Status = status,
+                    RequestPath = path
+                };
 
-                newResponseBody.Seek(0, SeekOrigin.Begin);
+                await dbContext.Logs.AddAsync(logTable);
+                await dbContext.SaveChangesAsync();
+
+                Console.WriteLine($"HTTP FULL INFO:\n" +
+                    $"\tLogUploadTime: {logTable.LogUploadTime}\n" +
+                    $"\tRequestJson: {logTable.RequestJson}\n" +
+                    $"\tResponseJson: {logTable.ResponseJson}\n" +
+                    $"\tStatus: {logTable.Status}\n" +
+                    $"\tUserId: {callingUserId}\n" +
+                    $"\tRequestPath: {logTable.RequestPath}");
+
+            newResponseBody.Seek(0, SeekOrigin.Begin);
                 await newResponseBody.CopyToAsync(originalResponseBody);
             }
             else

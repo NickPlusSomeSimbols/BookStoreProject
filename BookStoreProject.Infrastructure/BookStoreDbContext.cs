@@ -16,7 +16,7 @@ namespace BookStoreProjectCore
         public DbSet<BookStore> BookStores { get; set; }
         public DbSet<BasketItem> BasketItem { get; set; }
         public DbSet<Basket> Basket { get; set; }
-        public DbSet<LogTable> logEntity { get; set; }
+        public DbSet<LogTable> Logs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

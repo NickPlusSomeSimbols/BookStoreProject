@@ -14,7 +14,7 @@ namespace BookStoreProjectAPI.Controllers
         }
 
         [HttpDelete("AllLog-Delete")]
-        public async Task<bool> DeletAllLog(int id)
+        public async Task<bool> DeletAllLog()
         {
             return await _loggerDataService.DeleteAllLogAsync();
         }

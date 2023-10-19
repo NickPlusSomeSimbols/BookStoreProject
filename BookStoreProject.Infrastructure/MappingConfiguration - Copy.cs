@@ -4,20 +4,23 @@ using BookStoreProjectInfrastructure.Dtos.Author;
 using BookStoreProjectInfrastructure.Dtos.Basket;
 using BookStoreProjectInfrastructure.Dtos.Book;
 
-public class AppMappingProfile : Profile
+namespace BookStoreProjectInfrastructure
 {
-	public AppMappingProfile()
-	{
-		CreateMap<Book, BookDto>().ReverseMap();
-        CreateMap<Book, CreateBookDto>();
-        CreateMap<Book, UpdateBookDto>();
+    public class AppMappingProfile : Profile
+    {
+        public AppMappingProfile()
+        {
+            CreateMap<Book, BookDto>().ReverseMap();
+            CreateMap<Book, CreateBookDto>();
+            CreateMap<Book, UpdateBookDto>();
 
-        CreateMap<Author, AuthorDto>();
-        CreateMap<Author, CreateAuthorDto>();
-        CreateMap<Author, UpdateAuthorDto>();
+            CreateMap<Author, AuthorDto>();
+            CreateMap<Author, CreateAuthorDto>();
+            CreateMap<Author, UpdateAuthorDto>();
 
-        CreateMap<AddBasketItemDto, BasketItem>();
-        CreateMap<BasketItemDto, BasketItem>();
-        CreateMap<UpdateBasketItemDto, BasketItem>();
+            CreateMap<AddBasketItemDto, BasketItem>();
+            CreateMap<BasketItemDto, BasketItem>();
+            CreateMap<UpdateBasketItemDto, BasketItem>();
+        }
     }
 }

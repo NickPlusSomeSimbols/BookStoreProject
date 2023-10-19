@@ -4,7 +4,7 @@ namespace BookStoreProjectInfrastructure.Providers;
 
 public class UserProvider
 {
-    public string GetUsername()
+    public static string GetUsername()
     {
         var user = new HttpContextAccessor().HttpContext?.User;
 

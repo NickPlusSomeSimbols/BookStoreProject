@@ -4,6 +4,7 @@ using BookStoreProjectCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreProjectInfrastructure.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class BookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231018132847_LogTableChange")]
+    partial class LogTableChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,7 +119,7 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.Property<string>("LoggedUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RequestJson")
                         .IsRequired()
@@ -135,7 +138,9 @@ namespace BookStoreProjectInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Logs");
+                    b.HasIndex("LoggedUserId");
+
+                    b.ToTable("logEntity");
                 });
 
             modelBuilder.Entity("BookStoreProjectCore.Model.Author", b =>
@@ -463,6 +468,15 @@ namespace BookStoreProjectInfrastructure.Migrations
                     b.HasOne("BookStoreProjectCore.Model.Book", null)
                         .WithMany()
                         .HasForeignKey("BooksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BookStoreProjectCore.Logging.LogTable", b =>
+                {
+                    b.HasOne("BookStoreProjectCore.IdentityAuth.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("LoggedUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

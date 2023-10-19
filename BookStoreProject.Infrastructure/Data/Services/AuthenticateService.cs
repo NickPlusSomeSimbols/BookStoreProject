@@ -71,7 +71,7 @@ public class AuthenticateService : IAuthenticateService
                 authClaims.Add(new Claim(ClaimTypes.Role, userRole));
             }
 
-            var myGuid = Guid.NewGuid();
+            _ = Guid.NewGuid();
 
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
 
