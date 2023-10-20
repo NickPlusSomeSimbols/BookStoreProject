@@ -49,12 +49,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseAuthentication(); // identifying who the user is
 app.UseAuthorization(); // defines what a given user can do within the app
 
 app.MapControllers();
 
-app.UseRouting();
 
 app.UseMiddleware<LoggingMiddleware>();
 

@@ -94,3 +94,4 @@ C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Mi
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\mika\source\repos\BookStoreProject\BookStoreProject\bin\Debug\net6.0\Newtonsoft.Json.dll

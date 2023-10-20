@@ -17,9 +17,9 @@ public class BasketDataService : IBasketDataService
     }
     public async Task BindBuyerToBasket(string userId, int basketToBindId)
     {
-        _context.Basket.FirstOrDefault(i => i.Id == basketToBindId).CustomerId = userId;
+        /*_context.Basket.FirstOrDefault(i => i.Id == basketToBindId).CustomerId = userId;
 
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();*/
     }
     public async Task<BasketItemDto> GetItemAsync(int ItemId)
     {

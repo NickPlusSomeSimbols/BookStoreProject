@@ -3,6 +3,9 @@ using BookStoreProjectCore.IdentityAuth;
 using BookStoreProjectCore.Logging;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BookStoreProjectAPI.Extentions
 {
@@ -22,7 +25,7 @@ namespace BookStoreProjectAPI.Extentions
             // Middleware is enabled only when the EnableRequestResponseLogging config value is set.  
             string[] url = httpContext.Request.Path.ToString().Split('/');
 
-            if (_isRequestResponseLoggingEnabled && !(url[^1] == "Login"))
+            if (_isRequestResponseLoggingEnabled /*&& !(url[^1] == "Login")*/)
             {
                 string callingUserId = "Unauthorized";
 
@@ -44,15 +47,12 @@ namespace BookStoreProjectAPI.Extentions
                 }
                 else
                 {
-                    /*var originalRequestBody = httpContext.Response.Body;
-                    using var newRequestBody = new MemoryStream();
-                    httpContext.Request.Body = newRequestBody;
-
-                    newRequestBody.Seek(0, SeekOrigin.Begin);
-                    requestBodyText = await new StreamReader(httpContext.Request.Body).ReadToEndAsync();*/
-
                     requestBodyText = await ReadBodyFromRequest(httpContext.Request);
-
+                    
+                    if(url[^1] == "Login" || url[^1] == "Register")
+                    {
+                        requestBodyText = MaskPassword(requestBodyText, "HiddenPassword");
+                    }
                 }
                 // LOG DATA TO EXTRACT
 
@@ -80,15 +80,7 @@ namespace BookStoreProjectAPI.Extentions
                 await dbContext.Logs.AddAsync(logTable);
                 await dbContext.SaveChangesAsync();
 
-                Console.WriteLine($"HTTP FULL INFO:\n" +
-                    $"\tLogUploadTime: {logTable.LogUploadTime}\n" +
-                    $"\tRequestJson: {logTable.RequestJson}\n" +
-                    $"\tResponseJson: {logTable.ResponseJson}\n" +
-                    $"\tStatus: {logTable.Status}\n" +
-                    $"\tUserId: {callingUserId}\n" +
-                    $"\tRequestPath: {logTable.RequestPath}");
-
-            newResponseBody.Seek(0, SeekOrigin.Begin);
+                newResponseBody.Seek(0, SeekOrigin.Begin);
                 await newResponseBody.CopyToAsync(originalResponseBody);
             }
             else
@@ -96,9 +88,6 @@ namespace BookStoreProjectAPI.Extentions
                 await _next(httpContext);
             }
         }
-
-        private static string FormatHeaders(IHeaderDictionary headers) => string.Join(", ", headers.Select(kvp => $"{kvp.Key}: {string.Join(", ", kvp.Value)}")); 
-
         private static async Task<string> ReadBodyFromRequest(HttpRequest request)
         {
             // Ensure the request's body can be read multiple times (for the next middlewares in the pipeline).  
@@ -111,6 +100,32 @@ namespace BookStoreProjectAPI.Extentions
             request.Body.Position = 0;
             return requestBody;
         }
+        /*private static async Task<string> ReadBodyFromRespose(HttpRequest responce)
+        {
+            // Ensure the request's body can be read multiple times (for the next middlewares in the pipeline).  
+            request.EnableBuffering();
 
+            using var streamReader = new StreamReader(request.Body, leaveOpen: true);
+            var requestBody = await streamReader.ReadToEndAsync();
+
+            // Reset the request's body stream position for next middleware in the pipeline.  
+            request.Body.Position = 0;
+            return requestBody;
+        }*/
+        public string MaskPassword(string json, string newPasswordPart)
+        {
+            try
+            {
+                JObject jsonObj = JObject.Parse(json);
+
+                jsonObj["password"] = newPasswordPart;
+                return jsonObj.ToString(Formatting.None);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return json;
+            }
+        }
     }
 }
