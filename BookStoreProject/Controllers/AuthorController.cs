@@ -13,7 +13,7 @@ public class AuthorController : BaseController
     {
         _authorDataService = authorDataService;
     }
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize]
     [HttpGet("Author-Get-Auth")]
     public async Task<AuthorDto> GetBookAuth(int id)
     {

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace BookStoreProjectAPI.Extentions
 {
-    public class LoggingMiddleware
+    public class LoggingMiddleware /*: IMiddleware*/
     {
         private readonly RequestDelegate _next;
         private readonly bool _isRequestResponseLoggingEnabled;
@@ -34,7 +34,6 @@ namespace BookStoreProjectAPI.Extentions
                      callingUserId = dbContext.Users.FirstOrDefault(i => i.UserName == httpContext.User.Identity.Name).Id;
                 }
 
-                // LOG DATA TO EXTRACT
                 var path = httpContext.Request.Path;
                 var status = httpContext.Response.StatusCode;
                 DateTime time = DateTime.UtcNow;
@@ -54,7 +53,6 @@ namespace BookStoreProjectAPI.Extentions
                         requestBodyText = MaskPassword(requestBodyText, "HiddenPassword");
                     }
                 }
-                // LOG DATA TO EXTRACT
 
                 // Temporarily replace the HttpResponseStream, which is a write-only stream, with a MemoryStream to capture it's value in-flight.  
                 var originalResponseBody = httpContext.Response.Body;
@@ -100,18 +98,6 @@ namespace BookStoreProjectAPI.Extentions
             request.Body.Position = 0;
             return requestBody;
         }
-        /*private static async Task<string> ReadBodyFromRespose(HttpRequest responce)
-        {
-            // Ensure the request's body can be read multiple times (for the next middlewares in the pipeline).  
-            request.EnableBuffering();
-
-            using var streamReader = new StreamReader(request.Body, leaveOpen: true);
-            var requestBody = await streamReader.ReadToEndAsync();
-
-            // Reset the request's body stream position for next middleware in the pipeline.  
-            request.Body.Position = 0;
-            return requestBody;
-        }*/
         public string MaskPassword(string json, string newPasswordPart)
         {
             try

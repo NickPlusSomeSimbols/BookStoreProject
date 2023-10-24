@@ -27,7 +27,16 @@ builder.Services.AddScoped<IBookStorageDataService, BookStorageDataService>();
 builder.Services.AddScoped<IBookStoreDataService, BookStoreDataService>();
 builder.Services.AddScoped<IBasketDataService, BasketDataService>();
 builder.Services.AddScoped<ILoggerDataService, LoggerDataService>();
+
+builder.Services.AddScoped<IInnlineClientService, InnlineClientService>();
+builder.Services.AddScoped<IInnlineLocationService, InnlineLocationService>();
+
 builder.Services.AddScoped<UserProvider>();
+
+builder.Services.AddHttpClient("BookStoreToInnline", client =>
+{
+    client.BaseAddress = new Uri("https://trackermakerapidev.innline.am/");
+});
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<BookStoreDbContext>()
@@ -38,7 +47,6 @@ builder.AddAuthentication();
 builder.AddSwaggerGen();
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -55,7 +63,6 @@ app.UseAuthentication(); // identifying who the user is
 app.UseAuthorization(); // defines what a given user can do within the app
 
 app.MapControllers();
-
 
 app.UseMiddleware<LoggingMiddleware>();
 
