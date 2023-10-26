@@ -15,7 +15,7 @@ namespace BookStoreProjectAPI.Controllers
         }
 
         [HttpGet("Location-Get")]
-        public async Task<InnlineLocationDto> GetLocation(int clientId, string fromCreationDate, string toCreationDate, int skip, bool isDeleted, int take)
+        public async Task<List<InnlineLocationDto>> GetLocation(int clientId, string fromCreationDate, string toCreationDate, int skip, bool isDeleted, int take)
         {
             return await _innlineLocationService.GetLocationAsync(clientId,fromCreationDate,toCreationDate,skip,isDeleted,take);
         }

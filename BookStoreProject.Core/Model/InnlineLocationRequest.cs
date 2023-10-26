@@ -8,11 +8,11 @@ namespace BookStoreProjectCore.Model
 {
     public class InnlineLocationRequest
     {
-        int clientId { get; set; }
-        string fromCreationDate { get; set; }
-        string toCreationDate { get; set; }
-        int skip { get; set; }
-        bool isDeleted { get; set; }
-        int take { get; set; }
+        public int clientId { get; set; }
+        public string fromCreationDate { get; set; }
+        public string toCreationDate { get; set; }
+        public int skip { get; set; }
+        public bool isDeleted { get; set; }
+        public int take { get; set; }
     }
 }
